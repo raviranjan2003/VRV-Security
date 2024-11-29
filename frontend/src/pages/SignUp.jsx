@@ -39,8 +39,8 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  // const baseUrl = "https://taskhub-ef9r.onrender.com";
-  const baseUrl = "http://localhost:8000";
+  const baseUrl = "https://vrv-security-dtk2.onrender.com";
+  // const baseUrl = "http://localhost:8000";
 
   const handleSubmit = async (event) => {
     event.preventDefault();

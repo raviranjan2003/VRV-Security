@@ -19,12 +19,14 @@ const UserTable = () => {
         setAnchorEl(null);
         setOpenMenuUserId(null); 
     };
+    const baseUrl = "https://vrv-security-dtk2.onrender.com";
+    // const baseUrl = "http://localhost:8000";
 
     const handleClick = async (role, id) => {
         setAnchorEl(null);
         setOpenMenuUserId(null);
         try {
-            const response = await axios.patch(`http://localhost:8000/users/update-role/${id}`, { role }, { withCredentials: true});
+            const response = await axios.patch(`${baseUrl}/users/update-role/${id}`, { role }, { withCredentials: true});
             if (response.status === 200) {
                 fetchUsers();
             }
@@ -36,7 +38,7 @@ const UserTable = () => {
     // Function to fetch data
     const fetchUsers = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/auth/get-user", { withCredentials: true});
+            const response = await axios.get(`${baseUrl}/auth/get-user`, { withCredentials: true});
             if (response.status !== 200) {
                 throw new Error("Failed to fetch data");
             }

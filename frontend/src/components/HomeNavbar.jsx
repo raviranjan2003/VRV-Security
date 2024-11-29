@@ -25,10 +25,11 @@ export default function HomeNavbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const baseUrl = "https://vrv-security-dtk2.onrender.com";
+  // const baseUrl = "http://localhost:8000";
   const handleLogOut = async () =>{
     setAnchorEl(null);
-    const logoutRes = await axios.get("http://localhost:8000/auth/sign-out", {withCredentials: true});
+    const logoutRes = await axios.get(`${baseUrl}/auth/sign-out`, {withCredentials: true});
     if(logoutRes.status === 200) {
       console.log("logged out successfully")
       localStorage.removeItem("user-vrv");

@@ -10,11 +10,11 @@ const Body = () => {
     const [errorMessage, setErrorMessage] = useState('');
     
     // const userContext = useAuth();
-    // console.log(userContext.user)
-
-    const handleAdmin = async (endpoint) => {
+    const baseUrl = "https://vrv-security-dtk2.onrender.com";
+    // const baseUrl = "http://localhost:8000";
+    const handleClick = async (endpoint) => {
         try {
-            const response = await axios.get(`http://localhost:8000/users/${endpoint}`,{ withCredentials: true });
+            const response = await axios.get(`${baseUrl}/users/${endpoint}`,{ withCredentials: true });
             if(response.status === 200) {
                 setIsAuthorize(true);
                 setIsNotAuthorize(false);
@@ -38,9 +38,9 @@ const Body = () => {
     <div className="main-container">
         <div className='parent-container'>
             <div className="child-container1">
-                <div className="options" onClick={()=>handleAdmin("admin")}>Admin</div>
-                <div className="options" onClick={()=>handleAdmin("manager")}>Manager</div>
-                <div className="options" onClick={()=>handleAdmin("user")}>Users</div>
+                <div className="options" onClick={()=>handleClick("admin")}>Admin</div>
+                <div className="options" onClick={()=>handleClick("manager")}>Manager</div>
+                <div className="options" onClick={()=>handleClick("user")}>Users</div>
             </div>
             <div className="child-container2">
                 <div className="content">
