@@ -8,7 +8,7 @@ This project implements a secure authentication system using JWT tokens for user
 * *Secure User Registration*: Users can create accounts securely, with password hashing for added protection.
 * *Login and Logout*: Secure login and logout functionality using JWT tokens.
 * *Role-Based Access Control (RBAC)*: User access is determined by their assigned role, ensuring they only interact with authorized resources.
-* *Admin, User, and Moderator Roles*: Three predefined roles with distinct permissions for added security and flexibility.
+* *Admin, User, and Manager Roles*: Three predefined roles with distinct permissions for added security and flexibility.
 
 ## Implementation Details
 
@@ -44,9 +44,66 @@ For JWT token management.
 * *Password Hashing*: Passwords are stored securely using the bcryptjs library.
 
 
-## Getting Started
-To get started with this project, follow these steps:
+## Pre-requisites
+- Install [Node.js](https://nodejs.org/en/) version 18.0.0
 
-1. Clone the repository using git clone.
-2. Install the required dependencies using npm install.
-3. Run the application using node app.js or nodemon.
+
+## Getting started
+- Clone the repository
+```
+git clone  https://github.com/raviranjan2003/VRV-Security.git
+cd VRV-Security
+```
+### Nodejs (server)
+```
+cd backend
+```
+- Install dependencies
+```
+npm install
+```
+- Run the project
+```
+nodemon  (recomended)
+or
+node app.js
+```
+  Navigate to `http://localhost:8000`
+
+## APIs Endpoints
+The folder structure of this app is explained below:
+
+| Endpoints | Description |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| **/aut/sign-up**                 | Used for registering new users.|
+| **/auth/sign-in**         | Used for signing in (authencate).|
+| **/auth/sign-out**                  | Used for signing out.|
+| **/auth/get-user**        | List all the users which is only visible to admin. 
+| **/users/update-role/:id**      | Admin can update the role of users. 
+| **/users/admin**              | Accessible to admin only.  
+| **/users/manager**      | Accessible to admin and manager only.
+| **/users/user**           | Accessible to all (admin, managers, user).
+
+### React (client)
+```
+cd frontend
+```
+- Install dependencies
+```
+npm install
+```
+- Run frontend
+```
+npm start
+```
+Navigate to `http://localhost:3000`
+
+## Routes
+|Routes | Description|
+| ----- | ---------- |
+|**/**| Home route|
+|**/sign-in**| Register new users.|
+|**/sign-up**| Logging in.|
+|**/admin**| Only accessible to admin.|
+|**/manager**|Accessible to admin and manager.|
+|**/user**| Accessible to all.|
