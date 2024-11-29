@@ -62,8 +62,9 @@ module.exports.SignIn = async (req, res) => {
                 // send the token in cookies which is more secure than sending it as response data
                 res.cookie('token', token, {
                     httpOnly: true, // Prevents JavaScript access to the cookie
-                    sameSite: 'Strict', 
-                  });
+                    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', 
+                    secure: process.env.NODE_ENV === 'production' 
+                });
           
                 res.status(200).json({ message: "Login Successfully !", data: { username: userDetails.username, role: userDetails.role } });
             } else {
