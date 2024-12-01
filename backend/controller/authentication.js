@@ -66,7 +66,7 @@ module.exports.SignIn = async (req, res) => {
                     httpOnly: true, // Prevents JavaScript access to the cookie
                     sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', 
                     secure: process.env.NODE_ENV === 'production',
-                    domain: "vrv-security-frontend.onrender.com"
+                    domain: "https://vrv-security-frontend.onrender.com"
                 });
           
                 res.status(200).json({ message: "Login Successfully !", data: { username: userDetails.username, role: userDetails.role } });
