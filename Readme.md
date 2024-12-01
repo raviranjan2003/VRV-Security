@@ -1,3 +1,9 @@
+### Admin credential
+```
+email: ravi@gmail.com
+password: 123456
+```
+
 # Secure Authentication and Authorization System with Role-Based Access Control (RBAC)
 
 ## Description
