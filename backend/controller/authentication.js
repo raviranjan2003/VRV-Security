@@ -60,14 +60,23 @@ module.exports.SignIn = async (req, res) => {
                 const token = jwt.sign({ user: userDetails }, SECRET_KEY, { expiresIn: '1h' });
 
                 console.log("env-> devlopment mode = ", process.env.NODE_ENV);
+                if(process.env.NODE_ENV === "development") {
+                    res.cookie('token', token, {
+                        httpOnly: true,
+                        sameSite: "Strict",
+                        secure: false
+                    })
+                }
                 
                 // send the token in cookies which is more secure than sending it as response data
-                res.cookie('token', token, {
-                    httpOnly: true, // Prevents JavaScript access to the cookie
-                    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', 
-                    secure: process.env.NODE_ENV === 'production',
-                    domain: "vrv-security-frontend.onrender.com"
-                });
+                if(process.env.NODE_ENV === "production") {
+                    res.cookie('token', token, {
+                        httpOnly: true, // Prevents JavaScript access to the cookie
+                        sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Strict', 
+                        secure: process.env.NODE_ENV === 'production',
+                        domain: "vrv-security-dtk2.onrender.com"
+                    });
+                }
           
                 res.status(200).json({ message: "Login Successfully !", data: { username: userDetails.username, role: userDetails.role } });
             } else {
